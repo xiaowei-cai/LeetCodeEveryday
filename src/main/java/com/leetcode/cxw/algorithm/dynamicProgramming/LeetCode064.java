@@ -1,4 +1,4 @@
-package com.leetcode.cxw.algorithm.array;
+package com.leetcode.cxw.algorithm.dynamicProgramming;
 
 /**
  * 【最小路径和】
