@@ -39,8 +39,12 @@ public class LeetCode002 {
                 tail = tail.next;
             }
             carry = sum / 10;
-            l1 = l1.next;
-            l2 = l2.next;
+            if(l1 != null){
+                l1 = l1.next;
+            }
+            if(l2 != null){
+                l2 = l2.next;
+            }
         }
         if (carry == 1) {
             tail.next = new ListNode(carry);
