@@ -52,9 +52,9 @@ public class LeetCode080 {
                 i++;
                 nums[i] = nums[j];
             } else if (map.get(nums[j]) < 2) {
+                map.put(nums[i], map.get(nums[i]) + 1);
                 i++;
                 nums[i] = nums[j];
-                map.put(nums[i], map.get(nums[i]) + 1);
             }
         }
         return i + 1;
