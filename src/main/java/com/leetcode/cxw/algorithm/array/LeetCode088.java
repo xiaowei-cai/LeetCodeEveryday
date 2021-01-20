@@ -6,7 +6,7 @@ package com.leetcode.cxw.algorithm.array;
  *
  * 说明：
  * 初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。
- * 你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+ * 你可以假设 nums1 有足够的空间（空间大于等于 m + n）来保存 nums2 中的元素。
  *  
  * 示例：
  * 输入：
@@ -25,7 +25,26 @@ package com.leetcode.cxw.algorithm.array;
  */
 
 public class LeetCode088 {
-    public void merge(int[] nums1, int m, int[] nums2, int n){
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int p1 = 0;
+        int p2 = 0;
+        int[] sorted = new int[m + n];
+        int cur;
+        while (p1 < m || p2 < n) {
+            if (p1 == m) {
+                cur = nums2[p2++];
+            } else if (p2 == n) {
+                cur = nums1[p1++];
+            } else if (nums1[p1] < nums2[p2]) {
+                cur = nums1[p1++];
+            } else {
+                cur = nums2[p2++];
+            }
+            sorted[p1 + p2 - 1] = cur;
+        }
 
+        for (int i = 0; i != m + n; ++i) {
+            nums1[i] = sorted[i];
+        }
     }
 }
