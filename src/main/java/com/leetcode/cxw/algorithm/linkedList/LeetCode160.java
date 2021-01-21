@@ -35,6 +35,7 @@ import com.leetcode.cxw.algorithm.common.ListNode;
 
 public class LeetCode160 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //走到尽头见不到你，于是走过你来时的路，等到相遇时才发现，你也走过我来时的路。
         if (headA == null || headB == null) {
             return null;
         }
