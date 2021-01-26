@@ -35,7 +35,10 @@ import java.util.Map;
 
 public class LeetCode1436 {
     public String destCity(List<List<String>> paths) {
-        Map<String, String> map = prepare(paths);
+        Map<String, String> map = new HashMap<>();
+        for (List<String> path : paths) {
+            map.put(path.get(0), path.get(1));
+        }
         String from = paths.get(0).get(0);
         while (true) {
             if (!map.containsKey(from)) {
@@ -43,13 +46,5 @@ public class LeetCode1436 {
             }
             from = map.get(from);
         }
-    }
-
-    private Map<String, String> prepare(List<List<String>> paths) {
-        Map<String, String> map = new HashMap<>();
-        for (List<String> path : paths) {
-            map.put(path.get(0), path.get(1));
-        }
-        return map;
     }
 }

@@ -20,16 +20,41 @@ import java.util.Set;
  */
 
 public class LeetCode142 {
+    /**
+     * 解法一:哈希表
+     */
     public ListNode detectCycle(ListNode head) {
-        //哈希表
         Set<ListNode> set = new HashSet<>();
         ListNode node = head;
-        while(node != null){
-            if(set.contains(node)){
+        while (node != null) {
+            if (set.contains(node)) {
                 return node;
-            }else{
+            } else {
                 set.add(node);
                 node = node.next;
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * 解法二:快慢指针
+     */
+    public ListNode detectCycle1(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            //slow和fast相等时说明有环并在环内相遇
+            if (slow == fast) {
+                ListNode slow2 = head;
+                while (slow2 != slow) {
+                    slow = slow.next;
+                    slow2 = slow2.next;
+                }
+                return slow;
             }
         }
         return null;
