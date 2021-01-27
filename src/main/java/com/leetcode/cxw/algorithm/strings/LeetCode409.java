@@ -24,6 +24,7 @@ package com.leetcode.cxw.algorithm.strings;
 
 public class LeetCode409 {
     public static int longestPalindrome(String s) {
+        //因为字符的 ASCII 值的范围为 [0, 128)
         int[] count = new int[128];
         int length = s.length();
         for (int i = 0; i < length; ++i) {
