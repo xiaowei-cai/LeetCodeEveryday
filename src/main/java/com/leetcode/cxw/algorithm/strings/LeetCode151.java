@@ -99,7 +99,7 @@ public class LeetCode151 {
         int start = 0, end = 0;
         while (start < n) {
             // 循环至单词的末尾
-            while (end < n && sb.charAt(end) != ' ') {
+            while (end < n && (sb.charAt(end) != ' ')) {
                 ++end;
             }
             // 翻转单词
@@ -132,6 +132,13 @@ public class LeetCode151 {
             ans.append(list.get(i)).append('.');
         }
         return ans.append(list.get(0)).toString();
+    }
+
+    public String reverseTest1(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        reverse(sb,0,s.length()-1);
+        reverseEachWord(sb);
+        return sb.toString();
     }
 
     public static void main(String[] args) {
