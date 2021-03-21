@@ -24,4 +24,30 @@ public class LeetCode344 {
             s[right--] = temp;
         }
     }
+
+    public String reverseString1(String s) {
+        int right = s.length() - 1;
+        StringBuilder sb = new StringBuilder();
+        for (int i = right; i >= 0; i--) {
+            sb.append(s.charAt(right));
+            right--;
+        }
+        return sb.toString();
+    }
+
+    public String reverseString2(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        int left = 0;
+        int right = s.length() - 1;
+        while (left < right) {
+            char tmp = sb.charAt(left);
+            sb.setCharAt(left++, sb.charAt(right));
+            sb.setCharAt(right--, tmp);
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new LeetCode344().reverseString2("cxw"));
+    }
 }
