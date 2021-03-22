@@ -26,14 +26,32 @@ package com.leetcode.cxw.algorithm.mathematics;
  */
 
 public class LeetCode1281 {
+    /**
+     * 解法一
+     */
     public int subtractProductAndSum(int n) {
         int sum = 0;
         int sub = 1;
         String number = String.valueOf(n);
         for (int i = 0; i < number.length(); i++) {
-            int str = Integer.parseInt(String.valueOf(number.charAt(i)));
+            int str = number.charAt(i) - '0';
             sum += str;
             sub *= str;
+        }
+        return sub - sum;
+    }
+
+    /**
+     * 解法二
+     */
+    public int subtractProductAndSum1(int n) {
+        int sum = 0;
+        int sub = 1;
+        while (n > 0) {
+            int num = n % 10;
+            sum += num;
+            sub *= num;
+            n /= 10;
         }
         return sub - sum;
     }

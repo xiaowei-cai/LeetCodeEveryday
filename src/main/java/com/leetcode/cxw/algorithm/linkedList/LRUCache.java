@@ -63,6 +63,22 @@ public class LRUCache {
 
     }
 
+    private Map<Integer, DLinkedNode> cache = new HashMap<>();
+    private int size;
+    private int capacity;
+    private DLinkedNode head;
+    private DLinkedNode tail;
+
+    public LRUCache(int capacity) {
+        this.size = 0;
+        this.capacity = capacity;
+        //使用伪头部和伪尾部节点
+        head = new DLinkedNode();
+        tail = new DLinkedNode();
+        head.next = tail;
+        tail.prev = head;
+    }
+
     /**
      * 在链表头部添加节点，时间O(1)
      */
@@ -98,21 +114,6 @@ public class LRUCache {
         return res;
     }
 
-    private Map<Integer, DLinkedNode> cache = new HashMap<>();
-    private int size;
-    private int capacity;
-    private DLinkedNode head;
-    private DLinkedNode tail;
-
-    public LRUCache(int capacity) {
-        this.size = 0;
-        this.capacity = capacity;
-        //使用伪头部和伪尾部节点
-        head = new DLinkedNode();
-        tail = new DLinkedNode();
-        head.next = tail;
-        tail.prev = head;
-    }
 
     public int get(int key) {
         DLinkedNode node = cache.get(key);
